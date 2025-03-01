@@ -1,0 +1,214 @@
+.pageContainer {
+    background-color: #DADADA;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    width: 100%;
+    /* align-items: center; */
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+.dashboard-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mainContent {
+    width: 100%;
+    max-width: 1200px;
+    flex-grow: 1;
+}
+
+.pageTitle {
+    color: #555758;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.statBlock {
+    background: #F2EDFD;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #3C3C3C;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.statBlock:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.statTitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #555758;
+    margin-bottom: 0.25rem;
+}
+
+.statValue {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1D75DD;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.chatContainer {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    max-height: 250px;
+    overflow-y: auto;
+    color:#030303;
+}
+
+.chat-message {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    max-width: 80%;
+    color: #3C3C3C;
+}
+
+.bot-message {
+    background-color: #e0e0e0;
+    align-self: flex-start;
+    color: #000;
+}
+
+.user-message {
+    background-color: #1D75DD;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.chatInputContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.chatInputContainer input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-right: 0.5rem;
+    outline: none;
+    box-sizing: border-box;
+    color: #030303;
+}
+
+.chatInputContainer button {
+    background-color: #1D75DD;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.chatInputContainer button:hover {
+    background-color: #134A9F;
+}
+.stars {
+    display: flex;
+    gap: 0.2rem; /* Space between stars */
+  }
+  
+  .starImage {
+    width: 33px; /* Adjust size as needed */
+    height: 30px; /* Ensure consistent height */
+  }
+  .dividerLine {
+    width: 1px;
+    background-color: #e0e0e0;
+    margin: 0 20px;
+    height: auto;
+    align-self: stretch;
+  }
+  /* NoScenarios.module.css */
+
+.noScenariosContainer {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    background-color: white; /* Background color of the block */
+    padding: 32px; /* Increased padding for better spacing */
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-top: 20px; /* Margin above the block */
+    width: 70%; /* Full width */
+    max-width: 800px; /* Max width for better alignment */
+  }
+  
+  .noScenariosTitle {
+    font-size: 36px; /* Larger font for the title */
+    font-weight: bold; /* Bold title */
+    color: #3C3C3C; /* Dark gray color */
+    text-align: center; /* Center the title */
+  }
+  
+  .noScenariosText {
+    font-size: 20px; /* Slightly larger font size for the text */
+    color: #131313; /* Text color */
+    text-align: center; /* Center the text */
+  }
+  
+  .noScenariosButtonContainer {
+    display: flex; /* Flex container for buttons */
+    justify-content: center; /* Center the buttons */
+    margin-top: 20px; /* Space above the buttons */
+  }
+  
+  .noScenariosButton {
+    padding: 12px 24px; /* Padding for buttons */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 10px; /* Space between buttons */
+    font-size: 20px; /* Font size for buttons */
+    font-weight: 600; /* Bold font */
+  }
+  
+  .noScenariosSelect {
+    background-color: #28A745; /* Green background */
+    color: white; /* White text */
+  }
+  
+  .noScenariosSelect:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .noScenariosCustom {
+    background-color: #CDDB28; /* Yellow background */
+    color: white; /* White text */
+  }
+  
+  .noScenariosCustom:hover {
+    background-color: #A1C11D; /* Darker yellow on hover */
+  }
+  

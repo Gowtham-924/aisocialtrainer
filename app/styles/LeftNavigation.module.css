@@ -1,0 +1,78 @@
+.leftNavigation {
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+  
+  .logo {
+    width: 282px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; Added consistent top margin for logo */
+    margin-bottom: 40px; /* Ensure space between logo and nav items */
+  }
+  
+  .logo img {
+    
+    /* border-radius: 12px; */
+    object-fit: cover; /* Ensures the image stays within the bounds */
+  }
+  
+  .navItem {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    font-family: 'Actor', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #555758;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    margin-bottom: 5px; /* Added margin to space out nav items */
+  }
+  
+  .navItem:hover {
+    color: #1D75DD;
+  }
+  
+  .activeNavItem {
+    color: #000;
+  }
+  
+  .logoutButton {
+    display: flex;
+    /* justify-content: center; Center align text horizontally */
+    /* align-items: center; Center align text vertically */
+    padding: 15px 20px;
+    width: 100%;
+    background-color: #b0232d; /* Adjusted to a darker red for better contrast */
+    color: #ffffff; /* White text for contrast */
+    border: none; /* Clean look */
+    /* border-radius: 8px; Rounded corners for a modern design */
+    font-family: 'Actor', sans-serif;
+    font-size: 16px; /* Increased font size to improve readability */
+    font-weight: bold; /* Bold text for emphasis */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    margin-top: auto; /* Dynamically push to the bottom */
+    margin-bottom: 20px; /* Add spacing below */
+  }
+  
+  .logoutButton:hover {
+    background-color: #8d1b24; /* Darker shade of red for hover state */
+    color: #ffffff; /* Ensure text remains white for contrast */
+  }
+  
+  .logoutButton:active {
+    transform: translateY(2px); /* Button "click" effect */
+    background-color: #76161d; /* Even darker red for active state */
+  }
+  

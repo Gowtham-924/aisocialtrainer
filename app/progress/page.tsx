@@ -1,0 +1,112 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import LeftNavigation from "../components/LeftNavigation";
+import styles from "../styles/ProgressPage.module.css";
+
+const TOTAL_SCENARIOS = 4; // Total number of scenarios available
+const POINTS_PER_SCENARIO = 250; // Points awarded per scenario scenarios
+
+export default function ProgressPage() {
+  const [scenariosCompleted, setScenariosCompleted] = useState(0);
+  const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [pointsEarned, setPointsEarned] = useState(0);
+  const [badgesUnlocked, setBadgesUnlocked] = useState(0);
+  const [lastBadgeEarned, setLastBadgeEarned] = useState("No badges earned yet");
+
+  // Fetch progress data from the backend
+  useEffect(() => {
+    const fetchProgressData = async () => {
+      const email = localStorage.getItem("userEmail");
+      if (!email) {
+        alert("No user found. Redirecting to login.");
+        window.location.href = "/auth/login";
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/progress?email=${email}`);
+        const data = await response.json();
+
+        if (response.ok) {
+          // Update state based on fetched data
+          setScenariosCompleted(data.scenariosCompleted);
+          setCompletionPercentage(
+            Math.round((data.scenariosCompleted / TOTAL_SCENARIOS) * 100)
+          );
+          setPointsEarned(data.scenariosCompleted * POINTS_PER_SCENARIO);
+
+          // Determine badges based on completed scenarios
+          if (data.scenariosCompleted === 0) {
+            setBadgesUnlocked(0);
+            setLastBadgeEarned("No badges earned yet");
+          } else if (data.scenariosCompleted === 1) {
+            setBadgesUnlocked(1);
+            setLastBadgeEarned("Beginner");
+          } else if (data.scenariosCompleted === 2 || data.scenariosCompleted === 3) {
+            setBadgesUnlocked(2);
+            setLastBadgeEarned("Intermediate");
+          } else if (data.scenariosCompleted >= 4) {
+            setBadgesUnlocked(3);
+            setLastBadgeEarned("Advanced");
+          }
+        } else {
+          alert(`Error: ${data.error}`);
+        }
+      } catch (error) {
+        console.error("Failed to fetch progress data:", error);
+        alert("Error fetching progress data. Please try again later.");
+      }
+    };
+
+    fetchProgressData();
+  }, []);
+
+  return (
+    <div className={`${styles.pageContainer} flex`} role="main">
+      <LeftNavigation />
+
+      {/* Main content */}
+      <div className="ml-64 p-6 w-full flex justify-center items-center h-screen">
+        <div className="max-w-5xl w-full">
+          {/* Progress Overview Heading */}
+          <h1 className={styles.pageTitle}>Progress Overview</h1>
+
+          {/* Stats Grid */}
+          <div className={`${styles.gridContainer} gap-6`}>
+            <div className={styles.statBlock} aria-labelledby="scenariosCompletedTitle">
+              <h2 id="scenariosCompletedTitle" className={styles.statTitle}>
+                Scenarios Completed
+              </h2>
+              <p className={styles.statValue}>{completionPercentage}%</p>
+              <p>
+                {scenariosCompleted}/{TOTAL_SCENARIOS}
+              </p>
+            </div>
+
+            <div className={styles.statBlock} aria-labelledby="pointsEarnedTitle">
+              <h2 id="pointsEarnedTitle" className={styles.statTitle}>
+                Points Earned
+              </h2>
+              <p className={styles.statValue}>{pointsEarned}</p>
+            </div>
+
+            <div className={styles.statBlock} aria-labelledby="badgesUnlockedTitle">
+              <h2 id="badgesUnlockedTitle" className={styles.statTitle}>
+                Badges Unlocked
+              </h2>
+              <p className={styles.statValue}>{badgesUnlocked}</p>
+            </div>
+
+            <div className={styles.statBlock} aria-labelledby="lastBadgeTitle">
+              <h2 id="lastBadgeTitle" className={styles.statTitle}>
+                Last Badge Earned
+              </h2>
+              <p className={styles.statValue}>{lastBadgeEarned}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
